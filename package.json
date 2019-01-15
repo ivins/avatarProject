@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/silentscribe/avatarProject/issues"
   },
-  "homepage": "https://github.com/silentscribe/avatarProject#readme"
+  "homepage": "https://github.com/silentscribe/avatarProject#readme",
+  "dependencies": {
+    "request": "^2.88.0"
+  }
 }
