@@ -30,5 +30,10 @@ function getRepoContributors(repoOwner, repoName, cb) {
 
 getRepoContributors("jquery", "jquery", function(err, result) {
   console.log("Errors:", err);
-  console.log("Result:", result);
+  const parsedBody = JSON.parse(result);
+  parsedBody.forEach(x => {
+    console.log(x.avatar_url);
+  });
 });
+
+
