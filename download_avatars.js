@@ -1,10 +1,19 @@
 const request = require('request');
+const token = require('./.env');
 
 console.log('Welcome to the GitHub Avatar Downloader!');
+console.log(token.GITHUB_TOKEN);
 
 function getRepoContributors(repoOwner, repoName, cb) {
-  const url = `https://api.github.com/repos/${repoOwner}/${repoName}/contributors`;
-  request(url, function(err, res, body) {
+  const options = {
+    url: `https://api.github.com/repos/${repoOwner}/${repoName}/contributors`,
+    headers: {
+      'User-Agent': 'request',
+      'Authorization': token
+    }
+  };
+
+  request(options, function(err, res, body) {
     cb(err, body);
     });
 }
