@@ -1,0 +1,19 @@
+{
+  "name": "avatarproject",
+  "version": "1.0.0",
+  "description": "Gets avatar from github contributor",
+  "main": "download_avatars.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/silentscribe/avatarProject.git"
+  },
+  "author": "Clive",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/silentscribe/avatarProject/issues"
+  },
+  "homepage": "https://github.com/silentscribe/avatarProject#readme"
+}
