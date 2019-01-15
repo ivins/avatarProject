@@ -1,10 +1,11 @@
 const request = require('request');
-const token = require('./secrets.js');
 const fs = require('fs');
+const token = require('./secrets.js');
 
 console.log('Welcome to the GitHub Avatar Downloader!');
 
-function getRepoContributors(repoOwner, repoName, cb) {
+//
+function getRepoContributors (repoOwner, repoName, cb) {
   const options = {
     url: `https://api.github.com/repos/${repoOwner}/${repoName}/contributors`,
     headers: {
@@ -18,7 +19,7 @@ function getRepoContributors(repoOwner, repoName, cb) {
     });
 }
 
-getRepoContributors("jquery", "jquery", function(err, result) {
+getRepoContributors(process.argv[2], process.argv[3], function(err, result) {
   console.log("Errors:", err);
   const parsedBody = JSON.parse(result);
   parsedBody.forEach(user => {
