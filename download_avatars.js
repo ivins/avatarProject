@@ -1,5 +1,6 @@
 const request = require('request');
 const token = require('./secrets.js');
+const fs = require('fs');
 
 console.log('Welcome to the GitHub Avatar Downloader!');
 
@@ -17,23 +18,28 @@ function getRepoContributors(repoOwner, repoName, cb) {
     });
 }
 
-// request.get('https://sytantris.github.io/http-examples/future.jpg')
-//        .on('error', function (err) {
-//          throw err;
-//        })
-//        .on('response', function (response) {
-//          console.log('Response Status Code: ', response.statusCode);
-//          console.log('Response Status Message: ', response.statusMessage);
-//          console.log('Content Type: ', response.headers['content-type']);
-//        })
-//        .pipe(fs.createWriteStream('./future.jpg'));
-
 getRepoContributors("jquery", "jquery", function(err, result) {
   console.log("Errors:", err);
   const parsedBody = JSON.parse(result);
-  parsedBody.forEach(x => {
-    console.log(x.avatar_url);
+  parsedBody.forEach(user => {
+    downloadImageByURL(user.avatar_url, user.login);
   });
 });
 
 
+function downloadImageByURL(url, filePath) {
+  const mkdir = './avatars/';
+  if (!fs.existsSync(mkdir)){
+    fs.mkdirSync(mkdir);
+  }
+  request.get(url)
+       .on('error', function (err) {
+         throw err;
+       })
+       .on('response', function (response) {
+         console.log('Response Status Code: ', response.statusCode);
+         console.log('Response Status Message: ', response.statusMessage);
+         console.log('Content Type: ', response.headers['content-type']);
+       })
+       .pipe(fs.createWriteStream('./avatars/' + filePath + '.jpeg'));
+}
