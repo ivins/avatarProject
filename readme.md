@@ -6,6 +6,6 @@ Given a GitHub repository name and owner, download all the contributors' profile
 
 ## Expected Usage
 
-This program should be executed from the command line, in the following manner:
+This program should be executed from the command line, in the following manner(jquery below is the Git username and the repo):
 
 `node download_avatars.js jquery jquery`
